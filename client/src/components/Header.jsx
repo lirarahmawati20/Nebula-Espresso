@@ -22,7 +22,12 @@ export default function Header() {
       <div className="w-full flex items-center justify-between gap-4">
         {/* <UtensilsCrossed size={40} /> */}
 
-        <div className="flex gap-4 w-1/2">
+        <div className="flex w-1/2">
+          <img
+            src="logo-removebg-preview.png"
+            alt="logo"
+            className="w-13 h-16 rounded-full top-4"
+          />
           <h1 className="logo">Espresso.com</h1>
         </div>
         <nav className="flex w-1/2">
@@ -43,6 +48,12 @@ export default function Header() {
               <CircleUser size={25} />
               <Link to="contac" className="no-underline  text-xl">
                 Account
+              </Link>
+            </li>
+
+            <li className="list-none flex items-center gap-2 cursor-pointer">
+              <Link to="login" className="no-underline  text-xl">
+                Login
               </Link>
             </li>
           </ul>
