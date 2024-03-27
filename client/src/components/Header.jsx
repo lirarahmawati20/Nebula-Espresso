@@ -55,6 +55,14 @@ export default function Header() {
               <Link to="login" className="no-underline  text-xl">
                 Login
               </Link>
+              
+            </li>
+
+            <li className="list-none flex items-center gap-2 cursor-pointer">
+              <Link to="home_admin" className="no-underline  text-xl">
+                admin
+              </Link>
+              
             </li>
           </ul>
         </nav>

@@ -6,9 +6,11 @@ import "./index.css";
 // import About from "./components/About.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
+import Home_admin from "./pages/Home_admin.jsx";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <App />,
     children: [
       {
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/home_admin",
+        element: <Home_admin />,
       },
 
       // {
