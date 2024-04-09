@@ -3,59 +3,55 @@ import { LockKeyholeOpen } from "lucide-react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
-import { Loader } from "lucide-react";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/login`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    username,
-    password,
-  }),
-  mode: "no-cors",
-})
-  .then(async (response) => {
-    console.log(response);
-    if (response.ok) {
-      console.log("masuk if");
-      return response.json();
-    } else {
-      console.log("masuk else");
-
-      const message = await response.text();
-      throw new Error(message);
-    }
-  })
-
-  .then((data) => {
-    console.log("sukses login");
-
-    localStorage.setItem("token", data.token);
-    console.log(data.token);
-    navigate("/home");
-    setIsLoggedIn(true);
-    setIsLoading(false);
-  })
-  .catch((error) => {
-    console.error("Login error:", error);
-    alert(error.message);
-    setIsLoading(false);
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
   });
-}
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/login",
+        formData
+      );
+      // Tangani respon dari backend
+      console.log(response.data);
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      localStorage.setItem(
+        "accessTokenExpiresIn",
+        response.data.accessTokenExpiresIn
+      );
+      navigate("/home_admin");
+      setIsLoggedIn(true);
+      setIsLoading(false);
+      // Simpan token di sini jika diperlukan
+    } catch (error) {
+      // Tangani error jika login gagal
+      console.error("Login failed:", error.response.data);
+
+      setHidden(false);
+    }
+  };
+
   if (isLoading) {
     return <Loader2 className="animate-spin text-blue-500" />;
   } else {
@@ -76,8 +72,9 @@ fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/login`, {
               <input
                 id="username"
                 type="text"
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
               />
             </div>
             <div className="input-group">
@@ -87,13 +84,19 @@ fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/login`, {
               <input
                 id="password"
                 type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn-login">
-              Login
+            <button type="submit" className="btn-loginn ">
+              Submit
             </button>
+            <label hidden={hidden}> username atau password salah</label>
+            <div className="to-register">
+              <Link to="../register">Sign Up </Link>
+              <Link to="../register">Forgot password ?</Link>
+            </div>
           </form>
         </div>
       );

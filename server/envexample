@@ -1,0 +1,9 @@
+DB_PORT=5432
+DB_NAME=nebula-espresso
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASSWORD=09876
+PORT=3000
+JWT_SECRET=pass123
+ACCESS_TOKEN_EXPIRATION=28800  # Access token kedaluwarsa setelah 28800 detik / 8 jam
+REFRESH_TOKEN_EXPIRATION=604800  # Refresh token kedaluwarsa setelah 7 hari  

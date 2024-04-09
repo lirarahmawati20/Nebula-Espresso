@@ -14,9 +14,8 @@
 
 import { useState } from "react";
 import { createContext } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Header from"./components/Header"
-import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
+// import Footer from "./components/Footer";
 
 
 export const AuthContext = createContext();
@@ -26,7 +25,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <header className="p-4 flex justify-between gap-8 shadow-md">
+      {/* <header className="p-4 flex justify-between gap-8 shadow-md">
         <Link to="/" className="font-bold text-xl">
           Getch
         </Link>
@@ -43,10 +42,10 @@ export default function App() {
             Login
           </Link>
         )}
-      </header>
-      <Header />
+      </header> */}
+      {/* <Header /> */}
       <Outlet />
-      <Footer />{" "}
+      {/* <Footer /> */}
     </AuthContext.Provider>
   );
 }

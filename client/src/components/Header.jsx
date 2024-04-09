@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { NotebookPen, Home, CircleUser } from "lucide-react";
+import { NotebookPen, CircleUser } from "lucide-react";
 import { useEffect, useState } from "react";
-import { UtensilsCrossed } from "lucide-react";
+// import { UtensilsCrossed } from "lucide-react";
 
 export default function Header() {
   const [scroll, setScroll] = useState(false);
@@ -32,12 +32,12 @@ export default function Header() {
         </div>
         <nav className="flex w-1/2">
           <ul className="flex w-full justify-evenly">
-            <li className="list-none flex items-center gap-2 cursor-pointer">
+            {/* <li className="list-none flex items-center gap-2 cursor-pointer">
               <Home size={25} />
-              <Link to="home" className="no-underline text-xl">
+              <Link to="../home" className="no-underline text-xl">
                 Home
               </Link>
-            </li>
+            </li> */}
             <li className="list-none flex items-center gap-2 cursor-pointer">
               <NotebookPen size={25} />
               <Link to="about" className="no-underline text-xl">
@@ -51,19 +51,18 @@ export default function Header() {
               </Link>
             </li>
 
-            <li className="list-none flex items-center gap-2 cursor-pointer">
-              <Link to="login" className="no-underline  text-xl">
+            {/* <li className="list-none flex items-center gap-2 cursor-pointer">
+              <Link to="../login" className="no-underline  text-xl">
                 Login
               </Link>
-              
-            </li>
+            </li> */}
 
-            <li className="list-none flex items-center gap-2 cursor-pointer">
-              <Link to="home_admin" className="no-underline  text-xl">
+            {/* <li className="list-none flex items-center gap-2 cursor-pointer">
+              <Link to="../home_admin" className="no-underline  text-xl">
                 admin
               </Link>
-              
-            </li>
+              <Link to="../register">register </Link>
+            </li> */}
           </ul>
         </nav>
       </div>
