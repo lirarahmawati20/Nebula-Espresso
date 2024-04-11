@@ -9,19 +9,12 @@ import {
   Boxes,
   CircleUser,
   Clock9,
-  // Facebook,
-  // Github,
   Home,
-  // Instagram,
   LogOut,
-  // LucideNotebookTabs,
-  // NotebookPen,
-  // PhoneCall,
   Users,
   Clock3,
   ListOrdered,
 } from "lucide-react";
-// import { NotebookPen CircleUser } from "lucide-react";
 
 export default function Home_admin() {
   const navigate = useNavigate();
@@ -45,7 +38,6 @@ export default function Home_admin() {
         <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
-              {" "}
               <div className="flex w-1/2">
                 <img
                   src="logo-removebg-preview.png"
@@ -64,12 +56,7 @@ export default function Home_admin() {
                 <span className="links_name">Dashboard</span>
               </Link>
             </li>
-            {/* <li>
-              <Link to="/product">
-                <Boxes size={25} />
-                <span className="links_name">Product</span>
-              </Link>
-            </li> */}
+           
             <li>
               <Link to="/transaction" activeClassName="active">
                 <Clock9 />
@@ -82,12 +69,7 @@ export default function Home_admin() {
                 <span className="links_name">Detail Transaction</span>
               </Link>
             </li>
-            {/* <li>
-              <Link to="../../product">
-                <NotebookPen size={25} />
-                <span className="links_name">About </span>
-              </Link>
-            </li> */}
+            
             <li>
               <Link to="/data_kasir">
                 <CircleUser size={25} />
@@ -113,12 +95,7 @@ export default function Home_admin() {
           </ul>
         </div>
         <section className="home-section">
-          {/* <nav>
-          <div className="sidebar-button sidebarBtn">
-            <i className="bx bxs-grid"></i>
-            <span className="dashboard">Dashboard</span>
-          </div>
-        </nav> */}
+         
 
           <div className="judul-header">
             <div className="tex-judul">Dashboard</div>
@@ -137,12 +114,7 @@ export default function Home_admin() {
                   <div className="number">90%</div>
                   <div className="box-topic">product</div>
 
-                  {/* <div className="indicator">
-              <span className="text">more info</span>
-                <Link to="/kasir">
-                  <i className="bx bxs-right-arrow-circle bx-tada bx-flip-vertical"></i>
-                </Link>
-            </div> */}
+                 
                 </div>
                 <i className="bx">
                   <Boxes size={90} />
@@ -153,13 +125,7 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">90%</div>
                   <div className="box-topic">orders</div>
-                  {/* <div className="indicator">
-                    <span className="text">more info</span>
-                    <Link to="/about">
-                      {" "}
-                      <i className="bx bxs-right-arrow-circle bx-tada bx-flip-vertical"></i>
-                    </Link>
-                  </div> */}
+                 
                 </div>
                 <i className="bx">
                   <ListOrdered size={90} />
@@ -170,12 +136,7 @@ export default function Home_admin() {
                   <div className="number">70%</div>
                   <div className="box-topic">History</div>
 
-                  {/* <div className="indicator">
-                    <span className="text">more info</span>
-                    <Link to="/data-kasir/add-kasir">
-                      <i className="bx bxs-right-arrow-circle bx-tada bx-flip-vertical"></i>
-                    </Link>
-                  </div> */}
+                  
                 </div>
                 <i className="bx">
                   <Clock3 size={90} />
@@ -186,12 +147,7 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">65%</div>
                   <div className="box-topic">unique visitors</div>
-                  {/* <div className="indicator">
-                    <span className="text">more info</span>
-                    <Link to="">
-                      <i className="bx bxs-right-arrow-circle bx-tada bx-flip-vertical"></i>
-                    </Link>
-                  </div> */}
+                 
                 </div>
                 <i className="bx">
                   <Users size={80} />

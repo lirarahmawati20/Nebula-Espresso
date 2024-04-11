@@ -125,7 +125,7 @@ export default function Home() {
         <div className="carousell">
           <div id="item1">
             <img src="https://4.bp.blogspot.com/-ftlZkpL9N1s/V2zacBBLeoI/AAAAAAAAJw4/xsu6g6zab2E4tqUTMr6G3j2AF3Y2QHemQCLcB/s1600/coffe%2Blatte.jpg" />
-            <p>
+            <p >
               {/* <p> Savor Haven</p> */}
               Each sip of espresso is an adventure in its richness that awakens
               the soul. In every drop, there lies a power that invigorates the

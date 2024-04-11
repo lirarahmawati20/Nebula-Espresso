@@ -110,7 +110,7 @@ export default function ProductUser() {
           </button>
         </Link>
 
-        <p className=".button-pilih">jeser ke kanan untuk memesan</p>
+        <p className=".button-pilih">geser ke kanan untuk memesan</p>
 
         <Link to="../home">
           <div className="button-pilih">

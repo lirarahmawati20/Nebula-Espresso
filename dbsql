@@ -1,0 +1,51 @@
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    generation INT NOT NULL,
+    present BOOLEAN DEFAULT FALSE NOT NULL
+);
+
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(30) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT null,
+    role VARCHAR(30)
+);
+
+
+CREATE TABLE Product (
+    id SERIAL PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    stock INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE transaksi (
+   	id SERIAL PRIMARY KEY,
+    user_id INT,
+    tanggal DATE NOT NULL,
+    no_transaction VARCHAR(30) NOT NULL,
+    total_price INT NOT NULL,
+    total_product INT NOT null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+-- Table: Transaksi Detail
+
+CREATE TABLE transaction_detail (
+id SERIAL PRIMARY KEY,
+product_name VARCHAR(50),
+product_price INT,
+amount  INT,
+total_price INT,
+id_transaction INT,
+image VARCHAR(50),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+FOREIGN KEY ( id_transaction )REFERENCES transaksi(id)
+)
