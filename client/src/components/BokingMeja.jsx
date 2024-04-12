@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { UserRound } from "lucide-react";
-// import { LockKeyholeOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import { Link } from "react-router-dom";S
 
 export default function BokingMeja() {
   const [nomeja, setNomeja] = useState("");
@@ -16,7 +14,6 @@ export default function BokingMeja() {
         />
       </div>
       <h2 className="login"></h2>
-      {/* <form> */}
       <div className="input-group">
         <label htmlFor="username">
           <UserRound size={45} className="icone-propil" />
@@ -52,7 +49,6 @@ export default function BokingMeja() {
         </button>
         <p className="transaction-text">Transaksi Pembayaran</p>
       </div>
-      {/* </form> */}
     </div>
   );
 }

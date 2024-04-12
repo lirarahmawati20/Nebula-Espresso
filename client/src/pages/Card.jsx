@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BookmarkX, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -52,7 +53,6 @@ export default function Card() {
       harga: 23000,
       gambar: "gambar13.png",
     },
-    // tambahkan data produk lainnya di sini
   ]);
 
   const getImage = (imageName) => `./images/${imageName}`;

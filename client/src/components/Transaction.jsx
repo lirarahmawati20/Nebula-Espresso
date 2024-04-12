@@ -1,22 +1,13 @@
-// import { useState } from "react";
-// import { FolderPlus } from "lucide-react";
-// import Popup from "./Popup"; // Mengimpor komponen Popup yang telah dibuat sebelumnya
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Header_Admin from "./Header_Admin";
 import {
   BadgeDollarSign,
-  Boxes,
   CircleUser,
   Clock9,
-
   Home,
-
   LogOut,
-
-  NotebookPen,
-
 } from "lucide-react";
+
 
 const transactions = [
   {
@@ -40,15 +31,26 @@ const transactions = [
 ];
 
 export default function Transaction() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div>
-      <div className="app">
-        <div className="sidebar">
+    <header>
+        <div className="menu-icon" onClick={toggleSidebar}>
+          <div className={`bar ${isSidebarOpen ? 'rotate-up' : ''}`}></div>
+          <div className={`bar ${isSidebarOpen ? 'hide' : ''}`}></div>
+          <div className={`bar ${isSidebarOpen ? 'rotate-down' : ''}`}></div>
+        </div>
+      </header>
+
+      <div className={`app ${isSidebarOpen ? 'active' : ''}`}>  
+      <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
-              {" "}
               <div className="flex w-1/2">
                 <img
                   src="logo-removebg-preview.png"
@@ -68,7 +70,6 @@ export default function Transaction() {
               </Link>
             </li>
 
-           
             <li>
               <Link to="/transaction" activeClassName="active">
                 <Clock9 />
@@ -82,7 +83,7 @@ export default function Transaction() {
                 <span className="links_name">Detail Transaction</span>
               </Link>
             </li>
-           
+
             <li>
               <Link to="/data_kasir">
                 <CircleUser size={25} />
@@ -100,6 +101,7 @@ export default function Transaction() {
           </ul>
         </div>
       </div>
+
       <div className="judul-header-ke2">
         <div className="tex-judul">Transaction</div>
       </div>

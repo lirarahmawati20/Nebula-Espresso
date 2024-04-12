@@ -15,8 +15,15 @@ import {
   Clock3,
   ListOrdered,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function Home_admin() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+      setIsSidebarOpen(!isSidebarOpen);
+    };
+
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -34,8 +41,16 @@ export default function Home_admin() {
   return (
     <>
       {/* <Header /> */}
-      <div className="app">
-        <div className="sidebar">
+ <header>
+        <div className="menu-icon" onClick={toggleSidebar}>
+          <div className={`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}></div>
+        </div>
+      </header>
+
+      <div className={`app ${isSidebarOpen ? "active" : ""}`}>
+         <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
               <div className="flex w-1/2">
@@ -56,7 +71,7 @@ export default function Home_admin() {
                 <span className="links_name">Dashboard</span>
               </Link>
             </li>
-           
+
             <li>
               <Link to="/transaction" activeClassName="active">
                 <Clock9 />
@@ -69,7 +84,7 @@ export default function Home_admin() {
                 <span className="links_name">Detail Transaction</span>
               </Link>
             </li>
-            
+
             <li>
               <Link to="/data_kasir">
                 <CircleUser size={25} />
@@ -95,8 +110,6 @@ export default function Home_admin() {
           </ul>
         </div>
         <section className="home-section">
-         
-
           <div className="judul-header">
             <div className="tex-judul">Dashboard</div>
           </div>
@@ -113,8 +126,6 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">90%</div>
                   <div className="box-topic">product</div>
-
-                 
                 </div>
                 <i className="bx">
                   <Boxes size={90} />
@@ -125,7 +136,6 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">90%</div>
                   <div className="box-topic">orders</div>
-                 
                 </div>
                 <i className="bx">
                   <ListOrdered size={90} />
@@ -135,8 +145,6 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">70%</div>
                   <div className="box-topic">History</div>
-
-                  
                 </div>
                 <i className="bx">
                   <Clock3 size={90} />
@@ -147,7 +155,6 @@ export default function Home_admin() {
                 <div className="right-side">
                   <div className="number">65%</div>
                   <div className="box-topic">unique visitors</div>
-                 
                 </div>
                 <i className="bx">
                   <Users size={80} />

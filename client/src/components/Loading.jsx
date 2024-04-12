@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 export default function Loading() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Contoh penggunaan useEffect untuk mensimulasikan pengambilan data atau operasi yang membutuhkan waktu
+  // useEffect untuk mensimulasikan pengambilan data atau operasi yang membutuhkan waktu
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false); // Setelah 2 detik, loading dihentikan

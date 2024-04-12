@@ -3,7 +3,6 @@ import Header_Admin from "./Header_Admin";
 import AddProductForm from "./AddProductForm";
 import { FolderPlus } from "lucide-react";
 import Popup from "./AddProductForm"; // Mengimpor komponen Popup yang telah dibuat sebelumnya
-// import Header from "./Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -54,7 +53,7 @@ export default function Product() {
   return (
     <div>
       {/* <Header /> */}
-      <Header_Admin />
+      {/* <Header_Admin /> */}
       {/* <div className="add-product">
         <FolderPlus size={40} onClick={togglePopup} />
       </div>
@@ -95,8 +94,10 @@ export default function Product() {
               <td>{product.stock}</td>
               <td>{product.created_at}</td>
               <td>
+                <div className="flex">
                 <button className="edit-button">Edit</button>{" "}
                 <button className="delete-button">Delete</button>
+                </div>
               </td>
             </tr>
           ))}

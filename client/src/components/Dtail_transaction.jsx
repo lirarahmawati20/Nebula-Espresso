@@ -7,6 +7,7 @@ import {
   LogOut,
   NotebookPen,
 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const transactionDetails = [
@@ -31,13 +32,25 @@ const transactionDetails = [
 ];
 
 export default function Dtail_transaction() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+      setIsSidebarOpen(!isSidebarOpen);
+    };
   return (
     <div>
-      <div className="app">
+      <header>
+        <div className="menu-icon" onClick={toggleSidebar}>
+          <div className={`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}></div>
+        </div>
+      </header>
+
+      <div className={`app ${isSidebarOpen ? "active" : ""}`}>
         <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
-              {" "}
               <div className="flex w-1/2">
                 <img
                   src="logo-removebg-preview.png"
@@ -65,8 +78,7 @@ export default function Dtail_transaction() {
             </li> */}
 
             <li>
-              <Link
-               to="/transaction" activeClassName="active">
+              <Link to="/transaction" activeClassName="active">
                 <Clock9 />
                 <span className="links_name">Transaction</span>
               </Link>

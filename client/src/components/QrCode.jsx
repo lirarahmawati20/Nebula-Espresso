@@ -10,10 +10,7 @@ export default function QrCode() {
         </div>
 
         <div className="center-container">
-          <img
-            src="https://www.pngall.com/wp-content/uploads/2/QR-Code.png"
-            alt="QR Code"
-          />
+          <img src="qrcode.png" alt="QR Code" />
         </div>
         <div className="center-container-button">
           <button>

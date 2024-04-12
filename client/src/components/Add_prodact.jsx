@@ -61,10 +61,11 @@ export default function Add_prodact() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-product">
         <div>
           <label htmlFor="NamePerodact">Name</label>
           <input
+            className="inputAdd"
             id="product_name"
             type="text"
             name="product_name"
@@ -76,6 +77,7 @@ export default function Add_prodact() {
         <div>
           <label htmlFor="image">image</label>
           <input
+            className="inputAdd"
             id="name-prodact"
             type="file"
             accept="image/*"
@@ -86,6 +88,7 @@ export default function Add_prodact() {
         <div>
           <label htmlFor="price">price</label>
           <input
+            className="inputAdd"
             id="price"
             type="number"
             name="price"
@@ -97,6 +100,7 @@ export default function Add_prodact() {
         <div>
           <label htmlFor="stok">stok</label>
           <input
+            className="inputAdd"
             id="stok"
             type="number"
             name="stock"

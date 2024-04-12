@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 // import Header_Admin from "./Header_Admin";
 import { CircleUser, LogOut } from "lucide-react";
+import { useState } from "react";
+
 import {
   BadgeDollarSign,
   Clock9,
@@ -22,14 +24,28 @@ const users = [
   },
 ];
 
-export default function Data_kasir() {
+export default function Transaction() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+
   return (
     <div>
-      <div className="app">
+      <header>
+        <div className="menu-icon" onClick={toggleSidebar}>
+          <div className={`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}></div>
+        </div>
+      </header>
+
+      <div className={`app ${isSidebarOpen ? "active" : ""}`}>
         <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
-              {" "}
               <div className="flex w-1/2">
                 <img
                   src="logo-removebg-preview.png"
@@ -114,7 +130,7 @@ export default function Data_kasir() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.level}</td>
-              <td>
+              <td className="flex">
                 <button className="edit-button">Edit</button>{" "}
                 <button className="delete-button">Delete</button>
               </td>
