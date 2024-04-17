@@ -9,9 +9,7 @@ return (
 
     <div className="app">
       <div className="sidebar">
-        {/* <div className="logo-details">
-            <span className="logo_name">jjjj</span>
-          </div> */}
+        
 
         <ul className="nav-links">
           <li>
