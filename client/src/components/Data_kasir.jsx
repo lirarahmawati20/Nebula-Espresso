@@ -1,31 +1,15 @@
-// import React from "react";
 import { Link } from "react-router-dom";
-// import Header_Admin from "./Header_Admin";
-import { Boxes, CircleUser, FolderPlus, LogOut, ShoppingBasket } from "lucide-react";
+import { Boxes, CircleUser,  LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
 import {
-  BadgeDollarSign,
   Clock9,
   Home,
 } from "lucide-react";
-const users = [
-  {
-    id: 1,
-    name: "John Doe",
-    email: "john@example.com",
-    level: "Admin",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    email: "jane@example.com",
-    level: "User",
-  },
-];
+
 
 export default function Transaction() {
   const navigate = useNavigate();
@@ -125,6 +109,13 @@ export default function Transaction() {
             </li>
 
             <li>
+              <Link to="/AddKasir">
+                <CircleUser size={25} />
+                <span className="links_name">Tambah Kasir </span>
+              </Link>
+            </li>
+
+            <li>
               <Link to="/login">
                 <LogOut size={25} />
                 <span className="links_name" id="logout">
@@ -139,9 +130,7 @@ export default function Transaction() {
         <div className="tex-judul">Data kasir</div>
       </div>
 
-     
       <table className="product-table-transaction">
-        
         <thead>
           <tr>
             <th>No</th>
@@ -159,8 +148,7 @@ export default function Transaction() {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td className="flex">
-                <button className="edit-button">Edit</button>{" "}
-                <button  className="delete-button">Delete</button>
+                <button className="delete-button">Delete</button>
               </td>
             </tr>
           ))}

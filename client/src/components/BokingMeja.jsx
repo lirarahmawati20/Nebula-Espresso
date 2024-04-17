@@ -92,7 +92,7 @@ export default function BokingMeja({ products, counts, showBok }) {
           <h2 className="login"></h2>
           <div className="input-group">
             <label htmlFor="username">
-              <UserRound size={45} className="icone-propil" />
+              <UserRound size={45} className="icone-propil1" />
             </label>
             <input
               id="username"
@@ -105,7 +105,7 @@ export default function BokingMeja({ products, counts, showBok }) {
           </div>
           <div className="input-group">
             <label htmlFor="number">
-              <UserRound size={45} className="icone-propil" />
+              <UserRound size={45} className="icone-propil1" />
             </label>
             <input
               id="number"

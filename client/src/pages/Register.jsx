@@ -121,8 +121,8 @@ const handleSubmit = async (e) => {
               {" "}
               Select Role
             </option>
-            <option value="admin"> Admin</option>
-            <option value="kasir"> Kasir</option>
+            <option value="admin"> admin</option>
+            <option value="kasir"> kasir</option>
           </select>
         </div>
 

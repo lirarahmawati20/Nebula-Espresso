@@ -34,7 +34,7 @@ export default function AddKasir() {
 
       // Kirim data kasir baru ke server
       await axios.post(
-        "http://localhost:3000/api/v1/createUser",
+        "http://localhost:3000/api/v1/register",
         formData,
         config
       );
@@ -87,7 +87,7 @@ export default function AddKasir() {
           />
         </div>
 
-        <div>
+        {/* <div>
           <label htmlFor="role">Role</label>
           <select
             id="role"
@@ -95,10 +95,9 @@ export default function AddKasir() {
             value={formData.role}
             onChange={handleChange}
           >
-            <option value="Admin">Admin</option>
             <option value="User">User</option>
           </select>
-        </div>
+        </div> */}
 
         <button type="submit">Tambah Kasir</button>
       </form>

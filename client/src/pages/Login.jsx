@@ -95,7 +95,7 @@ export default function Login() {
             <label hidden={hidden}> username atau password salah</label>
             <div className="to-register">
               <Link to="../register">Sign Up </Link>
-              <Link to="../register">Forgot password ?</Link>
+              <Link to="#">Forgot password ?</Link>
             </div>
           </form>
         </div>

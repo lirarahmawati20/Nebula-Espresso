@@ -49,7 +49,22 @@ export default function Home() {
             </p>
           </div>
         </div>
-
+        <div className="carousell1">
+          <div className="carousell2">
+            <img src="https://coffeeaffection.com/wp-content/uploads/2021/02/does-a-cappuccino-have-caffeine.jpg" />
+            <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?cs=srgb&dl=artistik-berbayang-berfokus-312418.jpg&fm=jpg" />
+            <img src="https://coffeeaffection.com/wp-content/uploads/2021/02/does-a-cappuccino-have-caffeine.jpg" />
+            <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?cs=srgb&dl=artistik-berbayang-berfokus-312418.jpg&fm=jpg" />
+            <div className="carousell3">
+              <img src="https://tse4.mm.bing.net/th?id=OIP.pSFYBKG3W2ZgrWpKUKKiVQHaJ4&pid=Api&P=0&h=220" />
+            </div>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.vNulbOwMJzAQ2lXcfOS2RwEsDh&pid=Api&P=0&h=220" />
+            <div className="carousell3">
+              <img src="https://tse4.mm.bing.net/th?id=OIP.pSFYBKG3W2ZgrWpKUKKiVQHaJ4&pid=Api&P=0&h=220" />
+            </div>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.vNulbOwMJzAQ2lXcfOS2RwEsDh&pid=Api&P=0&h=220" />
+          </div>
+        </div>
         <div className="carousell">
           <div id="item1">
             <img src="https://4.bp.blogspot.com/-ftlZkpL9N1s/V2zacBBLeoI/AAAAAAAAJw4/xsu6g6zab2E4tqUTMr6G3j2AF3Y2QHemQCLcB/s1600/coffe%2Blatte.jpg" />
@@ -61,8 +76,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div id="item3">
-            <img src="https://s3.scoopwhoop.com/anj/coffee-types-masthead/937244832.jpg" />
+          <div id="item1">
+            <img src="https://ds393qgzrxwzn.cloudfront.net/cat1/img/images/0/Xd3Gwy2Dif.jpg" />
             <p>
               Espresso is a symphony of flavors crafted from carefully roasted
               coffee beans and expertly extracted. In each cup, there is a
@@ -82,6 +97,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className="flex justify-between items-center bg-white-500 ">
         <button className="button-pilih">
           <ChevronsLeft size={50} />
