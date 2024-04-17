@@ -5,6 +5,7 @@ import {
   refresh,
   testToken,
   getAllKasir,
+  loginKasir,
 } from "../controllers/user.js";
 
 import { verifyToken } from "../middleware/verifyToken.js";
@@ -17,6 +18,8 @@ router.post("/api/v1/refresh-token", refresh);
 
 router.get("/api/v1/protected", verifyToken, testToken);
 router.get("/api/v1/getallkasir", getAllKasir);
+
+router.get("/api/v1/loginkasir",  loginKasir);
 
 router.post("/api/v1/logout", (req, res) => {
   // Di sini Anda dapat melakukan beberapa tindakan yang diperlukan saat logout
