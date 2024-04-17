@@ -33,7 +33,7 @@ export default function QrCode(transactionId) {
         </div>
         <div className="center-container-button">
           <button onClick={handleSelesai}>
-             selesai
+             Sudah Melakukan Pembayaran
           </button>
         </div>
       </div>

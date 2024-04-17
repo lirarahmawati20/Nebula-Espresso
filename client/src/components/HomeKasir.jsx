@@ -33,10 +33,63 @@ export default function HomeKasir() {
         error.response &&
         (error.response.status === 403 || error.response.status === 401)
       ) {
-        navigate("/login");
+        navigate("/loginkasir");
       }
     }
   };
+
+  const handleProses = async (transactionId) => { 
+    try {
+        const accessToken = localStorage.getItem("accessToken");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+        const response = await axios.put(
+          "http://localhost:3000/api/v1/transaction/proccess/" + transactionId,
+          config
+        );
+        console.log("transaction berhasil");
+        fetchTransaction();
+      } catch (error) {
+      console.error("Error transaction", error);
+       if (
+         error.response &&
+         (error.response.status === 403 || error.response.status === 401)
+       ) {
+         navigate("/loginkasir");
+       }
+      }
+
+  }
+
+  const handleSelesai = async (transactionId) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const response = await axios.put(
+        "http://localhost:3000/api/v1/transaction/selasai/" + transactionId,
+        config
+      );
+      console.log("transaction berhasil");
+      fetchTransaction();
+    } catch (error) {
+      console.error("Error transaction", error);
+       if (
+         error.response &&
+         (error.response.status === 403 || error.response.status === 401)
+       ) {
+         navigate("/loginkasir");
+       }
+    }
+  };
+
+  
 
   const hendleDetail = (transaction) => {
     setTransactionId(transaction.id);
@@ -49,8 +102,6 @@ export default function HomeKasir() {
         <Detail_transaction transactionId={transactionId} />
       ) : (
         <div>
-         
-
           <div className="judul-header-ke3">
             <div className="tex-judul">Data Transaction</div>
           </div>
@@ -65,7 +116,7 @@ export default function HomeKasir() {
                   <th>Customer</th>
                   <th>Tanggal</th>
                   <th>No. Transaksi</th>
-                   <th>Total Harga</th>
+                  <th>Total Harga</th>
                   <th>Total Produk</th>
                   <th>No Meja</th>
                   <th> status</th>
@@ -84,12 +135,30 @@ export default function HomeKasir() {
                     <td>{transaction.nomeja}</td>
                     <td>{transaction.status}</td>
                     <td>
+                      {transaction.status === "paid" ? (
+                        <button
+                          className="add-button bg-green-500"
+                          onClick={() => handleProses(transaction.id)}
+                        >
+                          proses
+                        </button>
+                      ) : transaction.status === "proccess" ? (
+                        <button
+                          className="add-button bg-green-500"
+                          onClick={() => handleSelesai(transaction.id)}
+                        >
+                          selesai
+                        </button>
+                      ) : (
+                        <span></span>
+                      )}
                       <button
                         className="edit-button"
                         onClick={() => hendleDetail(transaction)}
                       >
                         Deatil
                       </button>
+
                       {/* <button className="delete-button">Delete</button> */}
                     </td>
                   </tr>

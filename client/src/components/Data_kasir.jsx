@@ -53,6 +53,32 @@ export default function Transaction() {
   }, []);
 
 
+const handleDelete = async (kasirId) => {
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+    const response = await axios.delete(
+      "http://localhost:3000/api/v1/deletekasir/" + kasirId,
+      config
+    );
+    fetchKasirs();
+    alert("delete Kasir berhasil");
+  } catch (error) {
+    console.error("Error delete Kasir", error);
+     if (
+       error.response &&
+       (error.response.status === 403 || error.response.status === 401)
+     ) {
+       navigate("/login");
+     }
+  }
+};
+
+
 
   return (
     <div>
@@ -148,7 +174,9 @@ export default function Transaction() {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td className="flex">
-                <button className="delete-button">Delete</button>
+                <button className="delete-button" onClick={() => handleDelete(user.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

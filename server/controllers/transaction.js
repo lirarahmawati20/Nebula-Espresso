@@ -2,7 +2,7 @@ import { pool } from "../db.js";
 
 export async function getTransaction(_req, res) {
   try {
-    const query = `SELECT * FROM transaksi`;
+    const query = `SELECT * FROM transaksi ORDER BY id DESC;`;
     const data = await pool.query(query);
     res.status(200).json({
       status: "success",

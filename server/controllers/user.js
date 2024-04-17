@@ -213,3 +213,20 @@ export const getAllKasir = async (_req, res) => {
     });
   }
 };
+
+// Delete Kasir by ID
+export const deleteKasirById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM users WHERE role = 'kasir' AND id = $1", [
+      id,
+    ]);
+    res.status(200).json({
+      message: "Kasir successfully deleted.",
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: error.message,
+    });
+  }
+};

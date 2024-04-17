@@ -7,7 +7,7 @@ export default function AddKasir() {
     email: "",
     username: "",
     password: "",
-    role: "",
+    role: "kasir",
   });
   const navigate = useNavigate();
 
