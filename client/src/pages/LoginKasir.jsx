@@ -28,7 +28,7 @@ export default function LoginKasir() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/login",
+        "http://localhost:3000/api/v1/loginkasir",
         formData
       );
       console.log(response.data);
