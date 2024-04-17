@@ -30,11 +30,7 @@ router.put(
   updateToProccess
 );
 
-router.get(
-  "/api/v1/transactiondetail/:id",
-  verifyTokenKasir,
-  getTransactionDetailByTransaction
-);
+router.get("/api/v1/transactiondetail/:id", getTransactionDetailByTransaction);
 
 router.get("/api/v1/listProduct", getAllProducts);
 export default router;
