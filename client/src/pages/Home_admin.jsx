@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-// import Add_prodact from "../components/Add_prodact";
-// import Header from "../components/Header";
 import Product from "../components/Product";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
-  BadgeDollarSign,
   Boxes,
   CircleUser,
   Clock9,
@@ -41,7 +38,7 @@ export default function Home_admin() {
   return (
     <>
       {/* <Header /> */}
- <header>
+      <header>
         <div className="menu-icon" onClick={toggleSidebar}>
           <div className={`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div>
           <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
@@ -50,7 +47,7 @@ export default function Home_admin() {
       </header>
 
       <div className={`app ${isSidebarOpen ? "active" : ""}`}>
-         <div className="sidebar">
+        <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
               <div className="flex w-1/2">
@@ -73,15 +70,15 @@ export default function Home_admin() {
             </li>
 
             <li>
-              <Link to="/transaction" activeClassName="active">
-                <Clock9 />
-                <span className="links_name">Transaction</span>
+              <Link to="/product">
+                <Boxes size={25} />
+                <span className="links_name">Prodact</span>
               </Link>
             </li>
             <li>
-              <Link to="/detail_transaction">
-                <BadgeDollarSign size={25} />
-                <span className="links_name">Detail Transaction</span>
+              <Link to="/transaction" activeClassName="active">
+                <Clock9 />
+                <span className="links_name">Transaction</span>
               </Link>
             </li>
 
@@ -93,20 +90,14 @@ export default function Home_admin() {
             </li>
 
             <li>
-              <button onClick={handleLogout} className="flex gap-4">
+              <Link to="/login">
                 <LogOut size={25} />
-
                 <span className="links_name" id="logout">
                   logout
                 </span>
-              </button>
-            </li>
-            <li>
-              <Link to="/add_prodact">
-                <CircleUser size={25} />
-                <span className="links_name">add prodact</span>
               </Link>
             </li>
+          
           </ul>
         </div>
         <section className="home-section">
@@ -162,9 +153,7 @@ export default function Home_admin() {
               </div>
             </div>
           </div>
-          <div className="judul-header2 ">
-            <div className="tex-judul">All Product</div>
-          </div>
+          
           <Product />
         </section>
       </div>

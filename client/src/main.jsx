@@ -19,6 +19,10 @@ import BokingMeja from "./components/BokingMeja.jsx";
 import QrCode from "./components/QrCode.jsx";
 import Loading from "./components/Loading.jsx";
 import Add_prodact from "./components/Add_prodact.jsx";
+import HomeKasir from "./components/HomeKasir.jsx";
+import Detail_transaction_kasir from "./components/Detail_transactio_kasir.jsx";
+import AddKasir from "./components/AddKasir.jsx";
+import LoginKasir from "./pages/LoginKasir.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Login />,
+        element: <Home />,
       },
       {
         path: "/home",
@@ -95,6 +99,24 @@ const router = createBrowserRouter([
       {
         path: "/add_prodact",
         element: <Add_prodact />,
+      },
+      {
+        path: "/homeKasir",
+        element: <HomeKasir />,
+      },
+      {
+        path: "/detail_transaction_kasirr",
+        element: <Detail_transaction_kasir />,
+      },
+
+      {
+        path: "/AddKasir",
+        element: <AddKasir />,
+      },
+
+      {
+        path: "/loginKasir",
+        element: <LoginKasir />,
       },
     ],
   },

@@ -128,7 +128,7 @@ export default function BokingMeja({ products, counts, showBok }) {
           </div>
           <div className="flex-container">
             <button type="submit" onClick={handelePaymet}>
-              {/* <Link to="/qrCode">Next</Link> */}
+              {/* <Link to="/qrCode">Next</Link> */} Next
             </button>
             <p className="transaction-text">Transaksi Pembayaran</p>
           </div>

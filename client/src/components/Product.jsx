@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Header_Admin from "./Header_Admin";
-import AddProductForm from "./AddProductForm";
+// import Header_Admin from "./Header_Admin";
+// import AddProductForm from "./AddProductForm";
 import { FolderPlus } from "lucide-react";
-import Popup from "./AddProductForm"; // Mengimpor komponen Popup yang telah dibuat sebelumnya
+// import Popup from "./AddProductForm"; // Mengimpor komponen Popup yang telah dibuat sebelumnya
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -47,30 +47,26 @@ export default function Product() {
     fetchProducts();
   }, []);
 
-  const getImage = (imageName) => `./images/${imageName}`;
-  const [itemCount, setItemCount] = useState(0);
+   const handleDelete = (productId) => {
+     setProducts(products.filter((product) => product.id !== productId));
+   };
+  // const getImage = (imageName) => `./images/${imageName}`;
+  // const [itemCount, setItemCount] = useState(0);
 
   return (
     <div>
-      {/* <Header /> */}
-      {/* <Header_Admin /> */}
-      {/* <div className="add-product">
-        <FolderPlus size={40} onClick={togglePopup} />
+      <div className="judul-header">
+        <div className="tex-judul">Products</div>
       </div>
-      {showPopup && (
-        <Popup
-          onClose={togglePopup}
-          onAddProduct={(newProduct) => {
-            console.log("New Product:", newProduct); }}
-        />
-      )} */}
       <div className="flex">
-                  <button className="edit-button">
-      <Link to="/add_prodact">
-        <span className="edit-button">add product</span>
+        <button className="edit-button">
+          <Link to="/add_prodact">
+            <span>
+              <FolderPlus size={40} />
+            </span>
           </Link>
         </button>
-        </div>
+      </div>
       <table className="product-table">
         <thead>
           <tr>
@@ -100,8 +96,13 @@ export default function Product() {
               <td>{product.created_at}</td>
               <td>
                 <div className="flex">
-                  <button className="edit-button">Edit</button>{" "}
-                  <button className="delete-button">Delete</button>
+                  {/* <button className="edit-button">Edit</button>{" "} */}
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>

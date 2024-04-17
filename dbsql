@@ -1,11 +1,8 @@
-CREATE TABLE students (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    generation INT NOT NULL,
-    present BOOLEAN DEFAULT FALSE NOT NULL
-);
+
+create database nebula-espresso;
 
 
+-- Table: user
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(30) NOT NULL,
@@ -13,7 +10,7 @@ CREATE TABLE users (
     password VARCHAR(100) NOT null,
     role VARCHAR(30)
 );
-
+-- Table: product
 
 CREATE TABLE Product (
     id SERIAL PRIMARY KEY,
@@ -24,6 +21,8 @@ CREATE TABLE Product (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Table: Transaksi 
+
 
 CREATE TABLE transaksi (
    	id SERIAL PRIMARY KEY,
@@ -32,9 +31,9 @@ CREATE TABLE transaksi (
     no_transaction VARCHAR(30) NOT NULL,
     total_price INT NOT NULL,
     total_product INT NOT null,
-    customer  VARCHAR, 
-    nomeja VARCHAR,
-    status VARCHAR,
+    customer  VARCHAR(255), 
+    nomeja VARCHAR(255),
+    status VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
@@ -48,7 +47,39 @@ product_price INT,
 amount  INT,
 total_price INT,
 id_transaction INT,
-image VARCHAR(50),
+image VARCHAR(255),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
 FOREIGN KEY ( id_transaction )REFERENCES transaksi(id)
 );
+
+INSERT INTO users (email, username, password, role) VALUES
+('lira@gmail.com', 'lira', '$2b$10$s73y9JYt71rQMG2C/mKra.QxFP4sW3Q93/h6ANG1zOeS8LZ7TuPuy', 'Admin'),
+('rahma@gmail.com', 'rahma', 'rahma123', 'User');
+
+
+
+INSERT INTO public.product (product_name, image, price, stock, created_at) VALUES
+('Breakfast Blend +','http://localhost:5173/public/images/gambar2.png',15000,100,'2024-04-08 13:04:28.498114'),
+('Chocolate Hazelnut','http://localhost:5173/public/images/gambar3.png',15000,100,'2024-04-08 12:05:16.179792'),
+('1French Roast','http://localhost:5173/public/images/gambar4.png',22000,100,'2024-04-09 17:10:28.081859'),
+('Mexican Chocolate','http://localhost:5173/public/images/gambar5.png',19000,100,'2024-04-09 17:12:36.7114'),
+('Mocha','http://localhost:5173/public/images/gambar12.png',28000,100,'2024-03-30 13:46:33.379887'),
+('French Vanilla','http://localhost:5173/public/images/gambar13.png',22000,100,'2024-04-08 13:04:28.498114'),
+('Gourmet Donut Shop','http://localhost:5173/public/images/gambar24.png',15000,100,'2024-04-08 12:05:16.179792'),
+('Caramel','http://localhost:5173/public/images/gambar14.png',35000,100,'2024-04-09 17:10:28.081859'),
+('Peru Decaf','http://localhost:5173/public/images/gambar15.png',22000,100,'2024-04-09 17:12:36.7114'),
+('Nicaragua','http://localhost:5173/public/images/gambar17.png',29000,100,'2024-03-30 13:46:33.379887'),
+('Brazil Santos','http://localhost:5173/public/images/gambar19.png',26000,100,'2024-04-08 13:04:28.498114'),
+('Ethiopia Natural','http://localhost:5173/public/images/gambar20.png',15000,100,'2024-04-08 12:05:16.179792'),
+('Pumpkin Spice','http://localhost:5173/public/images/gambar21.png',22000,100,'2024-04-09 17:10:28.081859'),
+('Cinnamon Hazelnut','http://localhost:5173/public/images/gambar22.png',25000,100,'2024-04-08 13:04:28.498114'),
+('Hazelnut','http://localhost:5173/public/images/gambar24.png',15000,100,'2024-04-08 12:05:16.179792'),
+('Cowboy Blend','http://localhost:5173/public/images/gambar26.png',27000,100,'2024-04-09 17:10:28.081859'),
+('6 Bean Blend','http://localhost:5173/public/images/gambar28.png',22000,100,'2024-04-09 17:12:36.7114');
+
+
+DROP DATABASE nebula-espresso;
+drop table users ;
+drop table transaction_detail ;
+drop table transaksi ;
+drop table Product ;

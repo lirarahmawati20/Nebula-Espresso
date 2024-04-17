@@ -13,7 +13,6 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <Outlet />
-      {/* <Footer /> */}
     </AuthContext.Provider>
   );
 }

@@ -318,8 +318,7 @@
 // }
 
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { BookmarkX } from "lucide-react";
 import BokingMeja from "../components/BokingMeja";
 export default function Card({ cartItems, countsCard, showCard, showCartDetails }) {

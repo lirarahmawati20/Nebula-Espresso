@@ -81,12 +81,12 @@ export default function Detail_transaction(transactionId) {
               </Link>
             </li>
 
-            {/* <li>
+              <li>
               <Link to="/product">
                 <Boxes size={25} />
-                <span className="links_name">Product</span>
+                <span className="links_name">Prodact</span>
               </Link>
-            </li> */}
+            </li>
 
             <li>
               <Link to="/transaction" activeClassName="active">
@@ -95,18 +95,8 @@ export default function Detail_transaction(transactionId) {
               </Link>
             </li>
 
-            <li>
-              <Link to="/detail_transaction">
-                <BadgeDollarSign size={25} />
-                <span className="links_name">Detail Transaction</span>
-              </Link>
-            </li>
-            {/* <li>
-              <Link to="../../product">
-                <NotebookPen size={25} />
-                <span className="links_name">About </span>
-              </Link>
-            </li> */}
+         
+           
             <li>
               <Link to="/data_kasir">
                 <CircleUser size={25} />

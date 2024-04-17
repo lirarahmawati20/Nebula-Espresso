@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   BadgeDollarSign,
+  Boxes,
   CircleUser,
   Clock9,
   Home,
   LogOut,
+  ShoppingBasket,
 } from "lucide-react";
 import Detail_transaction from "./Detail_transaction";
 
@@ -57,118 +59,121 @@ export default function Transaction() {
   return (
     <>
       {showDetail ? (
-        <Detail_transaction transactionId= {transactionId} />
-      ): (
+        <Detail_transaction transactionId={transactionId} />
+      ) : (
         <div>
-      <header>
-        <div className = "menu-icon" onClick = { toggleSidebar }>
-          <div className = {`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div >
-          <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
-          <div className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}></div>
-        </div >
-      </header >
+          <header>
+            <div className="menu-icon" onClick={toggleSidebar}>
+              <div className={`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div>
+              <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
+              <div
+                className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}
+              ></div>
+            </div>
+          </header>
 
-      <div className={`app ${isSidebarOpen ? "active" : ""}`}>
-        <div className="sidebar">
-          <div className="logo-details">
-            <span className="logo_name">
-              <div className="flex w-1/2">
-                <img
-                  src="logo-removebg-preview.png"
-                  alt="logo"
-                  className="w-13 h-16 rounded-full top-4"
-                />
-                <h1 className="logo ">Espresso</h1>
+          <div className={`app ${isSidebarOpen ? "active" : ""}`}>
+            <div className="sidebar">
+              <div className="logo-details">
+                <span className="logo_name">
+                  <div className="flex w-1/2">
+                    <img
+                      src="logo-removebg-preview.png"
+                      alt="logo"
+                      className="w-13 h-16 rounded-full top-4"
+                    />
+                    <h1 className="logo ">Espresso</h1>
+                  </div>
+                </span>
               </div>
-            </span>
+
+              <ul className="nav-links">
+                <li>
+                  <Link to="/home_admin" className="active">
+                    <Home size={25} />
+                    <span className="links_name">Dashboard</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/product">
+                    <Boxes size={25} />
+                    <span className="links_name">Prodact</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/transaction" activeClassName="active">
+                    <Clock9 />
+                    <span className="links_name">Transaction</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/data_kasir">
+                    <CircleUser size={25} />
+                    <span className="links_name">Data Kasir</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login">
+                    <LogOut size={25} />
+                    <span className="links_name" id="logout">
+                      logout
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <ul className="nav-links">
-            <li>
-              <Link to="/home_admin" className="active">
-                <Home size={25} />
-                <span className="links_name">Dashboard</span>
-              </Link>
-            </li>
+          <div className="judul-header-ke2">
+            <div className="tex-judul">Transaction</div>
+          </div>
 
-            <li>
-              <Link to="/transaction" activeClassName="active">
-                <Clock9 />
-                <span className="links_name">Transaction</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/detail_transaction">
-                <BadgeDollarSign size={25} />
-                <span className="links_name">Detail Transaction</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/data_kasir">
-                <CircleUser size={25} />
-                <span className="links_name">Data Kasir</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/login">
-                <LogOut size={25} />
-                <span className="links_name" id="logout">
-                  logout
-                </span>
-              </Link>
-            </li>
-          </ul>
+          {transactions.length === 0 ? (
+            <p>Loading...</p>
+          ) : (
+            <table className="product-table-transaction">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Customer</th>
+                  <th>Tanggal</th>
+                  <th>No. Transaksi</th>
+                  <th>Total Harga</th>
+                  <th>Total Produk</th>
+                  <th>No Meja</th>
+                  <th> status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactions.map((transaction) => (
+                  <tr key={transaction.id}>
+                    <td>{transaction.id}</td>
+                    <td>{transaction.customer}</td>
+                    <td>{transaction.created_at}</td>
+                    <td>{transaction.no_transaction}</td>
+                    <td>${transaction.total_price}</td>
+                    <td>{transaction.total_product}</td>
+                    <td>{transaction.nomeja}</td>
+                    <td>{transaction.status}</td>
+                    <td>
+                      <button
+                        className="edit-button"
+                        onClick={() => hendleDetail(transaction)}
+                      >
+                        Deatil
+                      </button>
+                      {/* <button className="delete-button">Delete</button> */}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
-      </div>
-
-      <div className="judul-header-ke2">
-        <div className="tex-judul">Transaction</div>
-      </div>
-
-  {
-    transactions.length === 0 ? (
-      <p>Loading...</p>
-    ) : (
-    <table className="product-table-transaction">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Customer</th>
-          <th>Tanggal</th>
-          <th>No. Transaksi</th>
-          <th>Total Harga</th>
-          <th>Total Produk</th>
-          <th>No Meja</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {transactions.map((transaction) => (
-          <tr key={transaction.id}>
-            <td>{transaction.id}</td>
-            <td>{transaction.customer}</td>
-            <td>{transaction.created_at}</td>
-            <td>{transaction.no_transaction}</td>
-            <td>${transaction.total_price}</td>
-            <td>{transaction.total_product}</td>
-            <td>{transaction.nomeja}</td>
-            <td>
-              <button className="edit-button" onClick={()=> hendleDetail(transaction)}>
-                Deatil
-              </button>
-              {/* <button className="delete-button">Delete</button> */}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
-  }
-      </div >
-    )
-}
-      </>
+      )}
+    </>
   );
 }

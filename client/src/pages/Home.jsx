@@ -38,15 +38,14 @@ export default function Home() {
           <div>
             We warmly welcome you to our place filled with warmth and flavors.
             <p>
-              Here, every
-              sip is a journey across an extraordinary galaxy of flavors. With
-              each espresso touch, we take you on a mesmerizing sensory
-              experience, where aroma and taste come together to form a symphony
-              of delight. Welcome the morning with a deep coffee indulgence, or
-              enjoy a peaceful evening with our captivating espresso touch.
-              Together with Nebula Espresso, let s explore the endless world of
-              coffee, where every sip is a new adventure in an unforgettable
-              flavor story
+              Here, every sip is a journey across an extraordinary galaxy of
+              flavors. With each espresso touch, we take you on a mesmerizing
+              sensory experience, where aroma and taste come together to form a
+              symphony of delight. Welcome the morning with a deep coffee
+              indulgence, or enjoy a peaceful evening with our captivating
+              espresso touch. Together with Nebula Espresso, let s explore the
+              endless world of coffee, where every sip is a new adventure in an
+              unforgettable flavor story
             </p>
           </div>
         </div>
@@ -54,7 +53,7 @@ export default function Home() {
         <div className="carousell">
           <div id="item1">
             <img src="https://4.bp.blogspot.com/-ftlZkpL9N1s/V2zacBBLeoI/AAAAAAAAJw4/xsu6g6zab2E4tqUTMr6G3j2AF3Y2QHemQCLcB/s1600/coffe%2Blatte.jpg" />
-            <p >
+            <p>
               Each sip of espresso is an adventure in its richness that awakens
               the soul. In every drop, there lies a power that invigorates the
               spirit, banishes drowsiness, and envelops you in its captivating
@@ -83,6 +82,18 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="flex justify-between items-center bg-white-500 ">
+        <button className="button-pilih">
+          <ChevronsLeft size={50} />
+        </button>
+
+        <Link to="../productUser">
+          <div className="button-pilih">
+            <ChevronsRight size={50} />
+          </div>
+        </Link>
+      </div>
+
       <Footer />
     </>
   );

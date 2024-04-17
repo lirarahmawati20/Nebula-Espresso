@@ -116,7 +116,7 @@
 //   );
 // }
 
-import React, { useEffect, useState } from "react";
+import{ useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ChevronsLeft, ChevronsRight, ShoppingCart } from "lucide-react";
@@ -149,6 +149,7 @@ export default function ProductUser() {
     fetchProducts();
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const decrement = (productId) => {
     if (counts[productId] && counts[productId] > 0) {
       setCounts({
@@ -177,11 +178,13 @@ const handleAddToCart = (product) => {
   increment(product.id);
   console.log("ini coun : ", counts);
 };
+
+
   return (
     <>
       {!showCard && (
         <>
-          <div className="flex justify-between items-center shadow-lg bg-white-500 ">
+          {/* <div className="flex justify-between items-center shadow-lg bg-white-500 ">
             <Link to="../home">
               <button className="button-pilih">
                 <ChevronsLeft size={50} />
@@ -195,7 +198,7 @@ const handleAddToCart = (product) => {
                 <ChevronsRight size={50} />
               </div>
             </Link>
-          </div>
+          </div> */}
 
           <div className="carousel">
             <div id="item2"></div>
@@ -235,6 +238,18 @@ const handleAddToCart = (product) => {
                 </button>
               </div>
             ))}
+          </div>
+          <div className="flex justify-between items-center shadow-lg bg-white-500 ">
+            <Link to="../home">
+              <button className="button-pilih">
+                <ChevronsLeft size={50} />
+              </button>
+            </Link>
+            <Link to="/productUser">
+              <div className="button-pilih">
+                <ChevronsRight size={50} />
+              </div>
+            </Link>
           </div>
         </>
       )}

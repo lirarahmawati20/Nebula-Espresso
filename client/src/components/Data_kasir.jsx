@@ -1,7 +1,7 @@
 // import React from "react";
 import { Link } from "react-router-dom";
 // import Header_Admin from "./Header_Admin";
-import { CircleUser, LogOut } from "lucide-react";
+import { Boxes, CircleUser, FolderPlus, LogOut, ShoppingBasket } from "lucide-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -103,12 +103,12 @@ export default function Transaction() {
               </Link>
             </li>
 
-            {/* <li>
+            <li>
               <Link to="/product">
                 <Boxes size={25} />
-                <span className="links_name">Product</span>
+                <span className="links_name">Prodact</span>
               </Link>
-            </li> */}
+            </li>
 
             <li>
               <Link to="/transaction" activeClassName="active">
@@ -118,23 +118,12 @@ export default function Transaction() {
             </li>
 
             <li>
-              <Link to="/detail_transaction">
-                <BadgeDollarSign size={25} />
-                <span className="links_name">Detail Transaction</span>
-              </Link>
-            </li>
-            <li>
               <Link to="/data_kasir">
                 <CircleUser size={25} />
                 <span className="links_name">Data kasir </span>
               </Link>
             </li>
-            {/* <li>
-              <Link to="../../product">
-                <CircleUser size={25} />
-                <span className="links_name">Contact</span>
-              </Link>
-            </li> */}
+
             <li>
               <Link to="/login">
                 <LogOut size={25} />
@@ -150,8 +139,9 @@ export default function Transaction() {
         <div className="tex-judul">Data kasir</div>
       </div>
 
-      {/* Tabel */}
+     
       <table className="product-table-transaction">
+        
         <thead>
           <tr>
             <th>No</th>
@@ -170,7 +160,7 @@ export default function Transaction() {
               <td>{user.role}</td>
               <td className="flex">
                 <button className="edit-button">Edit</button>{" "}
-                <button className="delete-button">Delete</button>
+                <button  className="delete-button">Delete</button>
               </td>
             </tr>
           ))}
