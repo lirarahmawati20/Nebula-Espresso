@@ -12,7 +12,7 @@ import ProductUser from "./pages/ProductUser.jsx";
 import Card from "./pages/Card.jsx";
 import Product from "./components/Product.jsx";
 import Header_Admin from "./components/Header_Admin.jsx";
-import Dtail_transaction from "./components/Dtail_transaction.jsx";
+import Detail_transaction from "./components/Detail_transaction.jsx";
 import Data_kasir from "./components/Data_kasir.jsx";
 import Transaction from "./components/Transaction.jsx";
 import BokingMeja from "./components/BokingMeja.jsx";
@@ -69,8 +69,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/dtail_transaction",
-        element: <Dtail_transaction />,
+        path: "/detail_transaction",
+        element: <Detail_transaction />,
       },
       {
         path: "/data_kasir",

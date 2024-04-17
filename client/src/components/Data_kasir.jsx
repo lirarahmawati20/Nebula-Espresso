@@ -2,7 +2,10 @@
 import { Link } from "react-router-dom";
 // import Header_Admin from "./Header_Admin";
 import { CircleUser, LogOut } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 import {
   BadgeDollarSign,
@@ -25,11 +28,46 @@ const users = [
 ];
 
 export default function Transaction() {
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const [kasirs, setKasirs] = useState([]);
+  const fetchKasirs = async () => {
+    try {
+      // Mengambil token akses dari localStorage
+      const accessToken = localStorage.getItem("accessToken");
+
+      // Menetapkan token bearer ke header Authorization
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      // Melakukan permintaan GET ke API dengan header yang ditetapkan
+      const response = await axios.get(
+        "http://localhost:3000/api/v1/getallkasir",
+        config
+      );
+      setKasirs(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      if (error.response.status === 403 || error.response.status === 401) {
+        console.log("Jika 403, arahkan pengguna kembali ke halaman login");
+        // Jika 403, arahkan pengguna kembali ke halaman login
+        navigate("/login");
+        //return;
+      }
+    }
+  };
+  useEffect(() => {
+    fetchKasirs();
+  }, []);
+
 
 
   return (
@@ -80,7 +118,7 @@ export default function Transaction() {
             </li>
 
             <li>
-              <Link to="/dtail_transaction">
+              <Link to="/detail_transaction">
                 <BadgeDollarSign size={25} />
                 <span className="links_name">Detail Transaction</span>
               </Link>
@@ -124,12 +162,12 @@ export default function Transaction() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
+          {kasirs.map((user, index) => (
             <tr key={user.id}>
               <td>{index + 1}</td>
-              <td>{user.name}</td>
+              <td>{user.username}</td>
               <td>{user.email}</td>
-              <td>{user.level}</td>
+              <td>{user.role}</td>
               <td className="flex">
                 <button className="edit-button">Edit</button>{" "}
                 <button className="delete-button">Delete</button>

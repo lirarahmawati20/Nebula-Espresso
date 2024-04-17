@@ -32,6 +32,9 @@ CREATE TABLE transaksi (
     no_transaction VARCHAR(30) NOT NULL,
     total_price INT NOT NULL,
     total_product INT NOT null,
+    customer  VARCHAR, 
+    nomeja VARCHAR,
+    status VARCHAR,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
@@ -48,4 +51,4 @@ id_transaction INT,
 image VARCHAR(50),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
 FOREIGN KEY ( id_transaction )REFERENCES transaksi(id)
-)
+);

@@ -79,7 +79,7 @@ export default function Home_admin() {
               </Link>
             </li>
             <li>
-              <Link to="/dtail_transaction">
+              <Link to="/detail_transaction">
                 <BadgeDollarSign size={25} />
                 <span className="links_name">Detail Transaction</span>
               </Link>

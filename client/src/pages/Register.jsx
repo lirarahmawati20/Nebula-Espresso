@@ -1,8 +1,61 @@
 import { Mail, UserRound } from "lucide-react";
 import { LockKeyholeOpen } from "lucide-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../App";
+
+
 
 export default function Register() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [hidden, setHidden] = useState(true);
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    role: "",
+});
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/api/v1/register",
+      formData
+    );
+    // Tangani respon dari backend
+    console.log(response.data);
+    localStorage.setItem("accessToken", response.data.accessToken);
+    localStorage.setItem("refreshToken", response.data.refreshToken);
+    localStorage.setItem(
+      "accessTokenExpiresIn",
+      response.data.accessTokenExpiresIn
+    );
+    navigate("/home_admin");
+    setIsLoggedIn(true);
+    setIsLoading(false);
+    // Simpan token di sini jika diperlukan
+  } catch (error) {
+    // Tangani error jika login gagal
+    console.error("Login failed:", error.response.data);
+
+    setHidden(false);
+  }
+};
+
+
   return (
     <div className="login-container">
       <div id="gambar-profil">
@@ -12,25 +65,46 @@ export default function Register() {
         />
       </div>
       <h2 className="login">Sing Up</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">
             <Mail size={45} className="icone-propil" />
           </label>
-          <input id="email" type="email" placeholder="email" />
+          <input
+            id="email"
+            type="email"
+            placeholder="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="input-group">
           <label htmlFor="username">
             <UserRound size={45} className="icone-propil" />
           </label>
-          <input id="username" type="text" placeholder="username" />
+          <input
+            id="username"
+            type="text"
+            placeholder="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
         </div>
         <div className="input-group">
           <label htmlFor="password">
             <LockKeyholeOpen size={45} className="icone-propil" />
           </label>
-          <input id="password" type="password" placeholder="password" />
+          <input
+            id="password"
+            type="password"
+            placeholder="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
         </div>
         <div className="input-group">
           <label htmlFor="role" className="ml-9 p-4 select-role">
@@ -39,6 +113,8 @@ export default function Register() {
           <select
             id="role"
             name="role"
+            value={formData.role}
+            onChange={handleChange}
             className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 warna-select"
           >
             <option value="" className="select-role">
@@ -46,7 +122,7 @@ export default function Register() {
               Select Role
             </option>
             <option value="admin"> Admin</option>
-            <option value="user"> User</option>
+            <option value="kasir"> Kasir</option>
           </select>
         </div>
 

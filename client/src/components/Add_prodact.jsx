@@ -10,7 +10,7 @@ export default function Add_prodact() {
     product_name: "",
     price: "",
     stock: "",
-    image: null,
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -46,8 +46,13 @@ export default function Add_prodact() {
           Authorization: `Bearer ${accessToken}`,
         },
       };
-      await axios.post("http://localhost:3000/api/v1/newProduct", data, config);
+      await axios.post(
+        "http://localhost:3000/api/v1/newProduct",
+        formData,
+        config
+      );
       console.log("Produk berhasil ditambahkan");
+      navigate("/home_admin");
     } catch (error) {
       console.error("Error fetching products:", error);
       if (error.response.status === 403 || error.response.status === 401) {
@@ -79,9 +84,10 @@ export default function Add_prodact() {
           <input
             className="inputAdd"
             id="name-prodact"
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
           />
         </div>
 

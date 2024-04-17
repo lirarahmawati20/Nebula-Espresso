@@ -4,7 +4,7 @@ import AddProductForm from "./AddProductForm";
 import { FolderPlus } from "lucide-react";
 import Popup from "./AddProductForm"; // Mengimpor komponen Popup yang telah dibuat sebelumnya
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Product() {
   // const [showPopup, setShowPopup] = useState(false);
@@ -64,8 +64,13 @@ export default function Product() {
             console.log("New Product:", newProduct); }}
         />
       )} */}
-
-      <AddProductForm onAdd={fetchProducts} />
+      <div className="flex">
+                  <button className="edit-button">
+      <Link to="/add_prodact">
+        <span className="edit-button">add product</span>
+          </Link>
+        </button>
+        </div>
       <table className="product-table">
         <thead>
           <tr>
@@ -95,8 +100,8 @@ export default function Product() {
               <td>{product.created_at}</td>
               <td>
                 <div className="flex">
-                <button className="edit-button">Edit</button>{" "}
-                <button className="delete-button">Delete</button>
+                  <button className="edit-button">Edit</button>{" "}
+                  <button className="delete-button">Delete</button>
                 </div>
               </td>
             </tr>

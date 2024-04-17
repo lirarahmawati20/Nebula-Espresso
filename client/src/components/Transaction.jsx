@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   BadgeDollarSign,
   CircleUser,
@@ -7,48 +8,68 @@ import {
   Home,
   LogOut,
 } from "lucide-react";
-
-
-const transactions = [
-  {
-    id: 1,
-    user_id: 1,
-    tanggal: "2024-04-05",
-    no_transaction: "TRX001",
-    total_price: 50,
-    total_product: 3,
-    created_at: "2024-04-05 10:00:00",
-  },
-  {
-    id: 2,
-    user_id: 2,
-    tanggal: "2024-04-05",
-    no_transaction: "TRX002",
-    total_price: 35,
-    total_product: 2,
-    created_at: "2024-04-05 11:00:00",
-  },
-];
+import Detail_transaction from "./Detail_transaction";
 
 export default function Transaction() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [transactions, setTransactions] = useState([]);
+  const navigate = useNavigate();
+  const [showDetail, setShowDetail] = useState(false);
+  const [transactionId, setTransactionId] = useState(0);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
-    <div>
-    <header>
-        <div className="menu-icon" onClick={toggleSidebar}>
-          <div className={`bar ${isSidebarOpen ? 'rotate-up' : ''}`}></div>
-          <div className={`bar ${isSidebarOpen ? 'hide' : ''}`}></div>
-          <div className={`bar ${isSidebarOpen ? 'rotate-down' : ''}`}></div>
-        </div>
-      </header>
+  useEffect(() => {
+    fetchTransaction();
+  }, []);
 
-      <div className={`app ${isSidebarOpen ? 'active' : ''}`}>  
-      <div className="sidebar">
+  const fetchTransaction = async () => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const response = await axios.get(
+        "http://localhost:3000/api/v1/transaction",
+        config
+      );
+      setTransactions(response.data.data);
+    } catch (error) {
+      console.error("Error fetching Transaction:", error);
+      if (
+        error.response &&
+        (error.response.status === 403 || error.response.status === 401)
+      ) {
+        navigate("/login");
+      }
+    }
+  };
+
+  const hendleDetail = (transaction) => {
+    setTransactionId(transaction.id)
+    setShowDetail(true);
+  }
+
+  return (
+    <>
+      {showDetail ? (
+        <Detail_transaction transactionId= {transactionId} />
+      ): (
+        <div>
+      <header>
+        <div className = "menu-icon" onClick = { toggleSidebar }>
+          <div className = {`bar ${isSidebarOpen ? "rotate-up" : ""}`}></div >
+          <div className={`bar ${isSidebarOpen ? "hide" : ""}`}></div>
+          <div className={`bar ${isSidebarOpen ? "rotate-down" : ""}`}></div>
+        </div >
+      </header >
+
+      <div className={`app ${isSidebarOpen ? "active" : ""}`}>
+        <div className="sidebar">
           <div className="logo-details">
             <span className="logo_name">
               <div className="flex w-1/2">
@@ -78,7 +99,7 @@ export default function Transaction() {
             </li>
 
             <li>
-              <Link to="/dtail_transaction">
+              <Link to="/detail_transaction">
                 <BadgeDollarSign size={25} />
                 <span className="links_name">Detail Transaction</span>
               </Link>
@@ -106,37 +127,48 @@ export default function Transaction() {
         <div className="tex-judul">Transaction</div>
       </div>
 
-      <table className="product-table-transaction">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Tanggal</th>
-            <th>No. Transaksi</th>
-            <th>Total Harga</th>
-            <th>Total Produk</th>
-            <th>Created_at</th>
-            <th>Actions</th>
+  {
+    transactions.length === 0 ? (
+      <p>Loading...</p>
+    ) : (
+    <table className="product-table-transaction">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Tanggal</th>
+          <th>No. Transaksi</th>
+          <th>Total Harga</th>
+          <th>Total Produk</th>
+          <th>No Meja</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((transaction) => (
+          <tr key={transaction.id}>
+            <td>{transaction.id}</td>
+            <td>{transaction.customer}</td>
+            <td>{transaction.created_at}</td>
+            <td>{transaction.no_transaction}</td>
+            <td>${transaction.total_price}</td>
+            <td>{transaction.total_product}</td>
+            <td>{transaction.nomeja}</td>
+            <td>
+              <button className="edit-button" onClick={()=> hendleDetail(transaction)}>
+                Deatil
+              </button>
+              {/* <button className="delete-button">Delete</button> */}
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.id}</td>
-              <td>{transaction.user_id}</td>
-              <td>{transaction.tanggal}</td>
-              <td>{transaction.no_transaction}</td>
-              <td>${transaction.total_price}</td>
-              <td>{transaction.total_product}</td>
-              <td>{transaction.created_at}</td>
-              <td>
-                {/* <button className="edit-button">Edit</button>{" "} */}
-                <button className="delete-button">Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
+  )
+  }
+      </div >
+    )
+}
+      </>
   );
 }

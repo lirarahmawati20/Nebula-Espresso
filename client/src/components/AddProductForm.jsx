@@ -158,9 +158,10 @@ const AddProductForm = ({ onAddProduct }) => {
               <div>
                 <label>Gambar:</label>
                 <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
+                  type="text"
+                  name="image"
+                  value={formData.image}
+                  onChange={handleChange}
                 />
               </div>
               <button type="submit">Tambah Produk</button>
