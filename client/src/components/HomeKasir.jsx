@@ -48,6 +48,7 @@ export default function HomeKasir() {
         };
         const response = await axios.put(
           "http://localhost:3000/api/v1/transaction/proccess/" + transactionId,
+          null,
           config
         );
         console.log("transaction berhasil");
@@ -74,6 +75,7 @@ export default function HomeKasir() {
       };
       const response = await axios.put(
         "http://localhost:3000/api/v1/transaction/selasai/" + transactionId,
+        null,
         config
       );
       console.log("transaction berhasil");

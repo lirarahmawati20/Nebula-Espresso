@@ -18,10 +18,10 @@ router.post("/api/v1/login", login);
 router.post("/api/v1/refresh-token", refresh);
 
 router.get("/api/v1/protected", verifyToken, testToken);
-router.get("/api/v1/getallkasir", getAllKasir);
+router.get("/api/v1/getallkasir", verifyToken, getAllKasir);
 
 router.post("/api/v1/loginkasir", loginKasir);
-router.delete("/api/v1/deletekasir/:id", deleteKasirById);
+router.delete("/api/v1/deletekasir/:id", verifyToken, deleteKasirById);
 
 router.post("/api/v1/logout", (req, res) => {
   // Di sini Anda dapat melakukan beberapa tindakan yang diperlukan saat logout

@@ -16,10 +16,10 @@ const upload = multer({
 
 const router = express.Router();
 
-router.post("/api/v1/newProduct", newProduct);
-router.get("/api/v1/getAllProducts", getAllProducts);
-router.get("/api/v1/getProductById/:id", getProductById);
-router.put("/api/v1/updateProduct/:id", updateProduct);
-router.delete("/api/v1/deleteProductById/:id", deleteProductById);
+router.post("/api/v1/newProduct", verifyToken, newProduct);
+router.get("/api/v1/getAllProducts", verifyToken, getAllProducts);
+router.get("/api/v1/getProductById/:id", verifyToken, getProductById);
+router.put("/api/v1/updateProduct/:id", verifyToken, updateProduct);
+router.delete("/api/v1/deleteProductById/:id", verifyToken, deleteProductById);
 
 export default router;
