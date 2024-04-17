@@ -123,14 +123,14 @@ export default function BokingMeja({ products, counts, showBok }) {
             <button onClick={(e) => setNomeja(nomeja + "6")}>6</button>
             <button onClick={(e) => setNomeja(nomeja + "7")}>7</button>
             <button onClick={(e) => setNomeja(nomeja + "8")}>8</button>
-            <button onClick={(e) => setNomeja(nomeja + "0")}>0</button>
             <button onClick={(e) => setNomeja(nomeja + "9")}>9</button>
+            <button  className="ubah-posisi"onClick={(e) => setNomeja(nomeja + "0")}>0</button>
           </div>
+
           <div className="flex-container">
             <button type="submit" onClick={handelePaymet}>
-              {/* <Link to="/qrCode">Next</Link> */} Next
+              Next
             </button>
-            <p className="transaction-text">Transaksi Pembayaran</p>
           </div>
         </div>
       )}

@@ -4,26 +4,6 @@ import axios from "axios";
 
 const AddProductForm = ({ onAddProduct }) => {
   const navigate = useNavigate();
-  // const [productName, setProductName] = useState("");
-  // const [price, setPrice] = useState("");
-  // const [stock, setStock] = useState("");
-  // const [imageURL, setImageURL] = useState("");
-
-  // const handleSubmit = () => {
-  //   // Mengirim data yang diisi ke parent component
-  //   onAddProduct({
-  //     productName,
-  //     price,
-  //     stock,
-  //     imageURL,
-  //   });
-
-  //   // Reset nilai input setelah data terkirim
-  //   setProductName("");
-  //   setPrice("");
-  //   setStock("");
-  //   setImageURL("");
-  //onClose(); // Menutup popup setelah pengiriman berhasil
 
   const [formData, setFormData] = useState({
     product_name: "",

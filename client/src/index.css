@@ -883,6 +883,56 @@ nav .sidebar-button i {
 }
 
 /* --------------- product ------------------- */
+.button-pilih3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+
+}
+
+.button-pilih3 {
+    background-color: #af634c;
+    border: none;
+    color: white;
+    padding: 10px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 550px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .button-pilih3 {
+        width: auto;
+        margin-left: 500px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .button-pilih3 {
+        width: auto;
+        margin-left: 350px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .button-pilih3 {
+        width: auto;
+        margin-left: 150px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .button-pilih3 {
+        width: auto;
+        margin-left: 100px;
+    }
+}
 
 
 .edit-button {
@@ -1168,13 +1218,18 @@ nav .sidebar-button i {
 
 
 .flex-container button {
-    background-color: #db7252;
+    background-color: #ba897b;
     height: 50px;
     border-radius: 10px;
-    width: 130px;
+    width: 400px;
     margin-left: 62px;
     color: #000000;
 
+}
+
+.ubah-posisi {
+    background-color: #ffffff;
+    justify-content: center;
 }
 
 .flex-container p {
@@ -1605,7 +1660,7 @@ nav .sidebar-button i {
 }
 
 /* Responsif */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .carousell2 {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 8px;
@@ -1615,6 +1670,18 @@ nav .sidebar-button i {
         margin-top: -200px;
     }
 }
+
+@media screen and (max-width: 778px) {
+    .carousell2 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 4px;
+    }
+
+    .carousell3 {
+        margin-top: 10px;
+    }
+}
+
 
 /* ------- add kasir ----- */
 .add-kasir-form {

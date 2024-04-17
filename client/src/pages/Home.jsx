@@ -1,13 +1,12 @@
 // import { useState } from "react";
-import {ChevronsLeft, ChevronsRight } from "lucide-react";
+import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import Carousel from "../components/Carousel";
 // import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 export default function Home() {
-
-    const date = new Date();
+  const date = new Date();
 
   return (
     <>
@@ -23,11 +22,10 @@ export default function Home() {
           month: "long",
           year: "numeric",
         })}
-        <Link to="../productUser">
-          <div className="button-pilih">
-            <ChevronsRight size={50} />
-          </div>
-        </Link>
+
+        <div className="button-pilih">
+          <ChevronsRight size={50} />
+        </div>
       </div>
 
       <Carousel />
@@ -98,17 +96,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center bg-white-500 ">
-        <button className="button-pilih">
-          <ChevronsLeft size={50} />
-        </button>
-
+      <button>
         <Link to="../productUser">
-          <div className="button-pilih">
-            <ChevronsRight size={50} />
-          </div>
+          <div className="button-pilih3">Beli Sekarang</div>
         </Link>
-      </div>
+      </button>
 
       <Footer />
     </>

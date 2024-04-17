@@ -11,7 +11,9 @@ Nebula Espresso adalah sebuah aplikasi web untuk toko kopi yang dapat mempermuda
 - Riwayat Pesanan: admin dan kasir  dapat melihat riwayat serta detail  pesanan konsument
 
 ## Diagram ER
-![Diagram ER](/path/to/your/erd.jpg)
+
+![Diagram ER](er-diagram.jpeg)
+
 
 ## Tech stack
 - Frontend: React.js

@@ -53,8 +53,10 @@ FOREIGN KEY ( id_transaction )REFERENCES transaksi(id)
 );
 
 INSERT INTO users (email, username, password, role) VALUES
-('lira@gmail.com', 'lira', '$2b$10$s73y9JYt71rQMG2C/mKra.QxFP4sW3Q93/h6ANG1zOeS8LZ7TuPuy', 'Admin'),
-('rahma@gmail.com', 'rahma', 'rahma123', 'User');
+('lira21@gmail.com','lira21','$2b$10$odjky.LHAswKozzYGiFq3eNGDEwEEp4MuHwYXUok.GGk/2kZeTSiC','admin'),
+('ira@gmail.com','ira', '$2b$10$eo4zr7Lm1GwrIvst4HQZruW8Bz73OtRPHDEIykbKYZUAHELrtOCMW','kasir');
+-- kasir : 12345
+-- admin :12345678
 
 
 
