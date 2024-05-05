@@ -1,6 +1,6 @@
 # Nebula Espresso
 
-Nebula Espresso adalah sebuah aplikasi web untuk toko kopi yang dapat mempermudah pengguna untuk melihat dan memesan berbagai jenis kopi. Aplikasi web  ini  juga menyediakan informasi tentang berbagai jenis kopi yang dijual, termasuk gambar, harga, dan ketersediaan stok.
+Nebula Espresso adalah sebuah aplikasi web untuk toko coffee yang dapat mempermudah pengguna untuk melihat dan memesan berbagai jenis kopi. Aplikasi web  ini  juga menyediakan informasi tentang berbagai jenis kopi yang dijual, termasuk gambar, harga, dan ketersediaan stok.
 
 ## Fitur
 - Penampilan produk: Pengguna dapat melihat daftar produk kopi yang tersedia beserta nama, gambar, harga.
